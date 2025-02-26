@@ -1,5 +1,6 @@
 package com.example.idftechtest.ui.components.userlist
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,13 +18,15 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+
 
 @Composable
-fun UserList() {
-    val userListViewModel: UserListViewModel = hiltViewModel()
-    val userList by userListViewModel.usersList.collectAsState()
+fun UsersListFragment(navController: NavController) {
+    val usersListViewModel: UsersListViewModel = hiltViewModel()
+    val usersList by usersListViewModel.usersList.collectAsState()
 
-    userListViewModel.getUsers()
+    usersListViewModel.getUsers()
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -34,11 +37,14 @@ fun UserList() {
                 .padding(40.dp)
         ) {
             // Show friends list on the screen
-            userList.forEach { user ->
+            usersList.forEach { user ->
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(5.dp),
+                        .padding(5.dp)
+                        .clickable {
+                            navController.navigate("user_details/${user.id}")
+                        },
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {

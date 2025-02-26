@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.idftechtest.ui.components.userlist.UserList
 import com.example.idftechtest.ui.theme.IDFTechTestTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,7 +14,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             IDFTechTestTheme {
-                UserList()
+                MyApp()
             }
         }
     }
