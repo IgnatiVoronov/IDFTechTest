@@ -80,6 +80,12 @@ dependencies {
     //Navigation
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
+    //Room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.room)
+    annotationProcessor(libs.room.compiler)
+    kapt(libs.room.compiler)
+    implementation (libs.androidx.room.ktx.vx)
 }
 kapt {
     correctErrorTypes = true

@@ -28,8 +28,7 @@ class UsersListViewModel @Inject constructor(private val userRepository: UserRep
                 _usersList.value = userList
             } catch (e: Exception) {
                 // Error handling
-                _usersList.value = emptyList() // Returns an empty list if an error occurs
-                _errorMessage.value = "API access error: ${e.message}"
+                _errorMessage.value = "Data access error: ${e.message}"
             }
         }
     }

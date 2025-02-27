@@ -2,7 +2,7 @@ package com.example.idftechtest.ui.components.userdetails
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.idftechtest.data.model.UserDetails
+import com.example.idftechtest.data.model.User
 import com.example.idftechtest.data.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,8 +14,8 @@ import javax.inject.Inject
 @HiltViewModel
 class UserDetailsViewModel @Inject constructor(private val userRepository: UserRepository) :
     ViewModel() {
-    private val _userDetails = MutableStateFlow(UserDetails())
-    val userDetails: StateFlow<UserDetails> get() = _userDetails
+    private val _userDetails = MutableStateFlow(User())
+    val userDetails: StateFlow<User> get() = _userDetails
 
     private val _errorMessage = MutableStateFlow("")
     val errorMessage: StateFlow<String> = _errorMessage.asStateFlow()
@@ -28,7 +28,7 @@ class UserDetailsViewModel @Inject constructor(private val userRepository: UserR
                 _userDetails.value = userDetail
             } catch (e: Exception) {
                 // Error handling
-                _errorMessage.value = "API access error: ${e.message}"
+                _errorMessage.value = "Data access error: ${e.message}"
             }
         }
     }
