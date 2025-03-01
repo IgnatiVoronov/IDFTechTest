@@ -48,7 +48,7 @@ Click on a user to open the details screen, where you can view additional inform
 and city.
 <img src="screenshots/User_detail_screen.png" width="300"/>
 
-Testing
+### Testing
 The application uses Mockito and JUnit for testing.
 To run the tests, select the desired test class, right-clicking, and
 choosing "Run".
