@@ -68,8 +68,11 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    testImplementation (libs.androidx.core.testing)
     // Coroutines
     implementation (libs.kotlinx.coroutines.android)
+    // Kotlin Coroutines Test
+    testImplementation (libs.kotlinx.coroutines.test)
     // Retrofit
     implementation (libs.retrofit)
     implementation (libs.converter.gson)
@@ -86,6 +89,9 @@ dependencies {
     annotationProcessor(libs.room.compiler)
     kapt(libs.room.compiler)
     implementation (libs.androidx.room.ktx.vx)
+    // Mockito
+    testImplementation (libs.mockito.core)
+    testImplementation (libs.mockito.inline)
 }
 kapt {
     correctErrorTypes = true

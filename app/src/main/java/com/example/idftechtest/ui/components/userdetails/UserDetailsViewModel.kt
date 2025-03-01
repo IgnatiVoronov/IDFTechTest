@@ -26,7 +26,7 @@ class UserDetailsViewModel @Inject constructor(private val userRepository: UserR
             try {
                 val userDetail = userRepository.getUserDetails(userId)
                 _userDetails.value = userDetail
-            } catch (e: Exception) {
+            } catch (e: RuntimeException) {
                 // Error handling
                 _errorMessage.value = "Data access error: ${e.message}"
             }

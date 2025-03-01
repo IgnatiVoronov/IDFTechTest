@@ -20,8 +20,8 @@ class UserRepository(private val apiService: ApiService, private val userDao: Us
         } catch (e: Exception) {
             // If an error occurs, get users from the local database
             val localUsers = userDao.getAllUsers().map { it.toUser() }
-            if (localUsers.isNotEmpty()) {
-                throw Exception("Unable to access the API and no users found in local database.")
+            if (localUsers.isEmpty()) {
+                throw RuntimeException("Unable to access the API and no users found in local database.")
             }
             localUsers
         }
@@ -34,7 +34,7 @@ class UserRepository(private val apiService: ApiService, private val userDao: Us
         } catch (e: Exception) {
             // If an error occurs, get user from the local database
             val localUser = userDao.getUserById(userId)
-            localUser?.toUser() ?: throw Exception("Unable to access the API and user not found in local database.")
+            localUser?.toUser() ?: throw RuntimeException("Unable to access the API and user not found in local database.")
         }
     }
 }

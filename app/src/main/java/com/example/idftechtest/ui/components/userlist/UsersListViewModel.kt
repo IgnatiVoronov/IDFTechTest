@@ -26,7 +26,7 @@ class UsersListViewModel @Inject constructor(private val userRepository: UserRep
             try {
                 val userList = userRepository.getUsers()
                 _usersList.value = userList
-            } catch (e: Exception) {
+            } catch (e: RuntimeException) {
                 // Error handling
                 _errorMessage.value = "Data access error: ${e.message}"
             }
